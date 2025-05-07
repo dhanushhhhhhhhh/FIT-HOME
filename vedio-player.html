@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workout Video</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #00ffcc;
+      margin-bottom: 20px;
+    }
+    video {
+      width: 80%;
+      max-width: 800px;
+      height: auto;
+      border: 4px solid #00ffcc;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00ffcc55;
+    }
+    a.back {
+      display: inline-block;
+      margin-top: 20px;
+      color: #00ffcc;
+      text-decoration: none;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Workout Video</h1>
+  <video id="workoutVideo" controls autoplay>
+    Sorry, your browser doesn't support embedded videos.
+  </video>
+  <br>
+  <a href="workout-options.html" class="back">← Back to Workout Options</a>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoName = urlParams.get('video');
+
+    if (videoName) {
+      const video = document.getElementById('workoutVideo');
+      video.src = `videos/${videoName}`;
+    } else {
+      document.querySelector('h1').innerText = "No video selected.";
+    }
+  </script>
+</body>
+</html>
